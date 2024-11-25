@@ -1,0 +1,12 @@
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/TreasuremapApplication.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/config/CorsConfiguration.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/controller/TreasuremapController.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/Adventurer.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/CaseType.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/Map.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/Mountain.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/Plain.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/SimulationRequest.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/model/Treasure.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/service/SimulationService.java
+/Users/alexiswirth/development/CARBONIT/treasuremap/src/main/java/com/alexiswirth/treasuremap/utils/Writer.java

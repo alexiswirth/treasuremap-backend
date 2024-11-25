@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Treasure Map backend
+  description: Allow to simulate a treasure map
+
+servers:
+  - url: "http://localhost:8080/"
+    description: Development environment
+
+tags:
+  - name: Simulation
+
+paths:
+  /api/simulate:
+    post:
+      summary: Simulate a treasure hunt
+      tags:
+        - Simulation
+      requestBody:
+        description: The information of the treasure hunt.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimulationRequest"
+      responses:
+        "200":
+          description: Success and execution of the simulation
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Final simulation of the treasure hunt
+                example: "C - 3 - 3"
+
+components:
+  schemas:
+    SimulationRequest:
+      title: SimulationRequest
+      type: object
+      description: The needed object to create the treasure hunt
+      required:
+        - content
+      properties:
+        content:
+          type: string
+          description: Information of the map and adventurer
+          example: "C - 3 - 3"

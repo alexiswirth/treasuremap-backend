@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Adventurer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">treasuremap</a> &gt; <a href="index.source.html" class="el_package">com.alexiswirth.treasuremap.model</a> &gt; <span class="el_source">Adventurer.java</span></div><h1>Adventurer.java</h1><pre class="source lang-java linenums">package com.alexiswirth.treasuremap.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Adventurer {
+    private final String name;
+    private int x, y;
+    private String orientation;
+<span class="fc" id="L10">    private final List&lt;Character&gt; sequences = new ArrayList&lt;Character&gt;();</span>
+    private int treasures;
+<span class="fc" id="L12">    public Adventurer(String name, int x, int y, String orientation, String sequence) {</span>
+<span class="fc" id="L13">        this.name = name;</span>
+<span class="fc" id="L14">        this.x = x;</span>
+<span class="fc" id="L15">        this.y = y;</span>
+<span class="fc" id="L16">        this.orientation = orientation;</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (char seq : sequence.toCharArray()) {</span>
+<span class="fc" id="L18">            sequences.add(seq);</span>
+        }
+<span class="fc" id="L20">        this.treasures = 0;</span>
+<span class="fc" id="L21">    }</span>
+    public void moveForward(Map map, List&lt;Adventurer&gt; adventurers) {
+<span class="fc" id="L23">        int newPosX = x, newPosY = y;</span>
+<span class="pc bpc" id="L24" title="4 of 5 branches missed.">        switch (orientation) {</span>
+<span class="fc" id="L25">            case &quot;N&quot; -&gt; newPosY--;</span>
+<span class="nc" id="L26">            case &quot;S&quot; -&gt; newPosY++;</span>
+<span class="nc" id="L27">            case &quot;E&quot; -&gt; newPosX++;</span>
+<span class="nc" id="L28">            case &quot;W&quot; -&gt; newPosX--;</span>
+        }
+<span class="fc" id="L30">        int finalNewPosX = newPosX;</span>
+<span class="fc" id="L31">        int finalNewPosY = newPosY;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (map.isAccessible(newPosX, newPosY) &amp;&amp; adventurers.stream()</span>
+<span class="pc bpc" id="L33" title="1 of 6 branches missed.">                .noneMatch(adventurer -&gt; adventurer.getPositionX() == finalNewPosX &amp;&amp; adventurer.getPositionY() == finalNewPosY)) {</span>
+<span class="fc" id="L34">            x = newPosX;</span>
+<span class="fc" id="L35">            y = newPosY;</span>
+<span class="fc" id="L36">            collectTreasure(map);</span>
+        }
+<span class="fc" id="L38">    }</span>
+    public void turnLeft() {
+<span class="pc bpc" id="L40" title="1 of 5 branches missed.">        orientation = switch (orientation) {</span>
+<span class="fc" id="L41">            case &quot;N&quot; -&gt; &quot;W&quot;;</span>
+<span class="fc" id="L42">            case &quot;W&quot; -&gt; &quot;S&quot;;</span>
+<span class="fc" id="L43">            case &quot;S&quot; -&gt; &quot;E&quot;;</span>
+<span class="fc" id="L44">            case &quot;E&quot; -&gt; &quot;N&quot;;</span>
+<span class="pc" id="L45">            default -&gt; orientation;</span>
+        };
+<span class="fc" id="L47">    }</span>
+    public void turnRight() {
+<span class="pc bpc" id="L49" title="1 of 5 branches missed.">        orientation = switch (orientation) {</span>
+<span class="fc" id="L50">            case &quot;N&quot; -&gt; &quot;E&quot;;</span>
+<span class="fc" id="L51">            case &quot;E&quot; -&gt; &quot;S&quot;;</span>
+<span class="fc" id="L52">            case &quot;S&quot; -&gt; &quot;W&quot;;</span>
+<span class="fc" id="L53">            case &quot;W&quot; -&gt; &quot;N&quot;;</span>
+<span class="pc" id="L54">            default -&gt; orientation;</span>
+        };
+<span class="fc" id="L56">    }</span>
+    public void collectTreasure(Map map) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (map.getCase(x, y) instanceof Treasure) {</span>
+<span class="fc" id="L59">            treasures++;</span>
+<span class="fc" id="L60">            map.collectTreasure(x, y);</span>
+        }
+<span class="fc" id="L62">    }</span>
+    public void execute(Map map, List&lt;Adventurer&gt; adventurers) {
+<span class="fc" id="L64">        char movement = this.sequences.get(0);</span>
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">        switch (movement) {</span>
+<span class="fc" id="L66">            case 'A' -&gt; moveForward(map, adventurers);</span>
+<span class="fc" id="L67">            case 'G' -&gt; turnLeft();</span>
+<span class="fc" id="L68">            case 'D' -&gt; turnRight();</span>
+        }
+<span class="fc" id="L70">        this.sequences.remove(0);</span>
+<span class="fc" id="L71">    }</span>
+    public char nextMove() {
+<span class="fc" id="L73">        return this.sequences.get(0);</span>
+    }
+    public boolean isStillSearching() {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        return !this.sequences.isEmpty();</span>
+    }
+
+    public int getPositionX() {
+<span class="fc" id="L80">        return this.x;</span>
+    }
+<span class="fc" id="L82">    public String getName() { return this.name; }</span>
+    public int getPositionY() {
+<span class="fc" id="L84">        return this.y;</span>
+    }
+<span class="fc" id="L86">    public String getOrientation() { return this.orientation; }</span>
+<span class="fc" id="L87">    public int getTreasures() { return this.treasures; }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L91">        return String.format(&quot;A - %s - %d - %d - %s - %d&quot;, name, x, y, orientation, treasures);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

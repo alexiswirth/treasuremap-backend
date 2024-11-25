@@ -1,0 +1,13 @@
+com/alexiswirth/treasuremap/config/CorsConfiguration$1.class
+com/alexiswirth/treasuremap/model/CaseType.class
+com/alexiswirth/treasuremap/model/Mountain.class
+com/alexiswirth/treasuremap/utils/Writer.class
+com/alexiswirth/treasuremap/config/CorsConfiguration.class
+com/alexiswirth/treasuremap/model/Treasure.class
+com/alexiswirth/treasuremap/service/SimulationService.class
+com/alexiswirth/treasuremap/controller/TreasuremapController.class
+com/alexiswirth/treasuremap/model/Adventurer.class
+com/alexiswirth/treasuremap/model/Plain.class
+com/alexiswirth/treasuremap/model/Map.class
+com/alexiswirth/treasuremap/model/SimulationRequest.class
+com/alexiswirth/treasuremap/TreasuremapApplication.class

@@ -1,0 +1,7 @@
+com/alexiswirth/treasuremap/model/TreasureTests.class
+com/alexiswirth/treasuremap/model/MapTests.class
+com/alexiswirth/treasuremap/model/SimulationRequestTests.class
+com/alexiswirth/treasuremap/controller/TreasuremapControllerTests.class
+com/alexiswirth/treasuremap/service/SimulationServiceTests.class
+com/alexiswirth/treasuremap/utils/WriterTests.class
+com/alexiswirth/treasuremap/model/AdventurerTests.class
